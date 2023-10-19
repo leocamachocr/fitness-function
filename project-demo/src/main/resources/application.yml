@@ -1,0 +1,9 @@
+spring:
+    application:
+        name: fitfun
+    datasource:
+        url: jdbc:h2:mem:testdb123
+    jpa:
+        show-sql: true
+    liquibase:
+        change-log: classpath:/db/changelog/db.changelog-master.xml
