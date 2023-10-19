@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import tests.integration.BaseIntegrationTests;
 
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HttpRequestTest extends BaseIntegrationTests {
@@ -18,6 +20,6 @@ public class HttpRequestTest extends BaseIntegrationTests {
 
     @Test
     public void greetingShouldReturnDefaultMessage() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/health", String.class)).contains("ok");
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/actuator/health", Map.class).get("status")).isEqualTo("UP");
     }
 }
